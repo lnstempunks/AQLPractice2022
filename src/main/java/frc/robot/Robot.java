@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Shooter;
+import frc.robot.Indexer;
 // Import Controller Modules
 import edu.wpi.first.wpilibj.PS4Controller;
 
@@ -24,6 +25,7 @@ public class Robot extends TimedRobot {
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
   private PS4Controller controller = new PS4Controller(0);
   private Shooter shooter = new Shooter();
+  private Indexer indexest = new Indexer();
    /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -84,13 +86,8 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
 
-    if(controller.getR2Button()){
-      shooter.shoot();
-    }
-    else{
-      shooter.stop();
-    }
-
+    shooter.shoot(controller.getR2Button());
+    indexest.index(controller.getTriangleButton());
   }
 
   /** This function is called once when the robot is disabled. */

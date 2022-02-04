@@ -14,12 +14,15 @@ public class Shooter {
 
     // Create Shoot Method
     // This method is going to run the motors
-    public void shoot() {
-        shooterMotor1.set(1);
-        shooterMotor2.set(1);
+    public void shoot(boolean button) {
+        if(button){
+            shooterMotor1.set(1);
+            shooterMotor2.set(1);
+        } else {
+            shooterMotor1.set(0);
+            shooterMotor2.set(0);
+        }
+        
     }
-    public void stop(){
-        shooterMotor1.set(0);
-        shooterMotor2.set(0);
-    }
+
 }
